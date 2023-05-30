@@ -1,57 +1,54 @@
 # ADNS
-Automated Deposit Notification System - a system that sends mobile notifications and emails to users when an automated deposit is missed due to insufficient funds in their primary money source (wallet).
+Automated Deposit Notification System - a system that sends mobile notifications or emails to users when an automated deposit is missed due to insufficient funds in their primary money source (wallet).
 
 ## Google Drive link to E-R Diagram and Database Schema
 
+## API Documentation
+
+https://documenter.getpostman.com/view/15065406/2s93mATKTf
 
 ## installation
 install required packages:
-  ->  npm install --save bcryptjs body-parser cookieparser cors dotenv express jsonwebtoken 
-  ->  npm install --save-dev nodemon
+  ->  npm install 
 
 to run server
-    -> npm run start
+    -> npm run start - starts up gateway service
+    -> To run microservice apis, open a new terminal for each service, navigate to directory of service 
+        e.g /src/apis/payment_gateway run "node server.js" 
 
-## EndPoints- Visit Documentation For More Information
 
+## Database
+ -> Find table sql exports in /table_export directory
  
-   
 
-## API Documentation
-
-https://documenter.getpostman.com/view/15065406/2s93Xwyiqs
-
-## Postman Collection Link
-
-
-
-## Api Endpoint link on Heroku
-
-
-## Setting Database Configurations and JWT Secret Key
--> Create a .env file
+## Setting Environment Variables
+-> Create a env_config.json file in root directory
     
-    1. Localhost Running- Include : 
-                DB_HOST='127.0.0.1'
-                DB_USER=''
-                DB_NAME=''
-                DB_PASSWORD=''
-                DB_PORT=8889
-                B_CRYPT_SALT_HASH=10
-                PORT=
-                JWT_SECRET_KEY=""
+    { 
+      "DB_HOST":"",
+      "DB_USER":"",
+      "DB_NAME":"",
+      "DB_PASSWORD":"",
+      "DB_PORT":"",
+      "BASE_URL":"",
+      "GATEWAY_PORT":"",
 
-    2. When Deploying to a hosting service :  
-      Include:    
-                DB_HOST='127.0.0.1'
-                DB_USER=''
-                DB_NAME=''
-                DB_PASSWORD=''
-                DB_PORT=8889
-                B_CRYPT_SALT_HASH=10
-                PORT=
-                JWT_SECRET_KEY=""   
-      Into Hosting Service Environment or Config Variables   
+      "WALLET_API_PORT":"8081",
+      "WALLET_API_URL":"http://localhost:8081/",
+
+      "USER_API_PORT":"8082",
+      "USER_API_URL":"http://localhost:8082/",
+
+      "PAYMENT_API_PORT":"8083",
+      "PAYMENT_API_URL":"http://localhost:8083/",
+
+      "NOTIFICATION_API_PORT":"8084",
+      "NOTIFICATION_API_URL":"http://localhost:8084/",
+
+      "EMAIL_SERVICE":"gmail",
+      "EMAIL_USERNAME":"",
+      "EMAIL_PASSWORD":""
+    }
 
 
 

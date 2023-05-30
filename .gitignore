@@ -1,3 +1,6 @@
+#env variables
+env_config.json
+
 # Logs
 logs
 *.log
@@ -78,6 +81,7 @@ web_modules/
 .env.test.local
 .env.production.local
 .env.local
+env_config.json
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
