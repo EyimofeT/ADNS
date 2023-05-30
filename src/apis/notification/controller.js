@@ -4,26 +4,14 @@ import fs from 'fs'
 import {getenv} from '../../core/helper.js'
 
 
-//function send mail
+//function sends update email to user
 export const send_mail= async (req, res)=>{
-    // const {first_name, last_name, email}= req.body
-    // return res.status(200).json({status:"success", message:"Send Email hit"}); 
+    
     const {first_name, last_name, email, amount, status}= req.body
 
     const name=last_name+' '+first_name
-    console.log(name)
-    // console.log(last_name)
-    console.log(email)
-    console.log(amount)
-    console.log(status)
-    
-    // const email='mofii4u@gmail.com'
-    // const name='bayo'
-    // const amount=8000
-    // const status='successful'
+   
     try {
-        // const { to, name } = req.body;
-    
         // Read the HTML template file
         const htmlTemplate = fs.readFileSync('notification.html', 'utf-8');
     

@@ -1,5 +1,5 @@
 import { mysqlConnection } from "../../core/db_config.js";
-import { checkbalance } from "./controller.js";
+
 
 
 export const credit_middleware = async (req,res,next)=>{
@@ -91,16 +91,7 @@ mysqlConnection.query(sql1, [user_id], async (err, result) => {
     return res.status(400).json({ status: "failed",message: "account not found" });
   } 
   next()
-  // else{
-  //   //checks if account balance is sufficient
-  //   const account_balance=await checkbalance(user_id)
-  //   if(account_balance<amount){
-  //     return res.status(400).json({ status: "failed",message: "insufficient funds" });
-  //   }
-  //   else{
-  //     // next()
-  //   }
-  // }
+  
  
 });
 

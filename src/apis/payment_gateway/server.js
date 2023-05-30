@@ -16,11 +16,6 @@ app.use(bodyParser.json())
 
 app.use('/', paymentRoutes);
 
-app.get("/mi", (req,res)=>{
-    // console.log(req.body)
-    res.send("Payment Endpoint called");
-});
-
 app.listen(port, ()=>{
     console.log("Payment Management Listening at localhost "+ port);    
 })

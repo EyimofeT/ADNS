@@ -31,32 +31,8 @@ export const charge_middleware = async (req,res,next)=>{
     } 
   
 
-//call user api to check if user exists
-//call wallet api to debit
-//call notification api to update
+
   
 next()
 
-  //test if user exists
-//   const sql1 = "SELECT * FROM users_table WHERE user_id = ?";
-//   mysqlConnection.query(sql1, [user_id], async (err, result) => {
-//     if (!result[0]) {
-//       return res.status(400).json({ status: "failed",message: "account not found" });
-//     } 
-//     else{
-//       //checks if account balance is sufficient
-//       const account_balance=await checkbalance(user_id)
-//       if(account_balance<amount){
-//         return res.status(400).json({ status: "failed",message: "insufficient funds" });
-//       }
-//       else{
-//         next()
-//       }
-//     }
-   
-//   });
-  
-  
-  
-  
   }

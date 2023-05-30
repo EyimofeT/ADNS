@@ -6,7 +6,6 @@ import crypto from 'crypto'
 export const credit = (req, res) => {
     const { user_id, amount } = req.body;
     const credit_sql=`update users_table set balance=balance+? where user_id=?`
-    // const sql2=`update users_table set balance=balance+? where user_id=?`
     const create_logs_sql='INSERT INTO logs(`user_id`, `amount`, `status`, `transaction_ref` ,`description`) VALUES (?,?,?,?,?)'
     const trans_ref=crypto.randomUUID()
     try {
@@ -34,7 +33,7 @@ export const credit = (req, res) => {
         return res.status(400).json({ message: "An Error Occured!" });
     }
 
-    // return res.status(200).json({ message: "Good to go!" });
+   
 
 }
 
@@ -54,7 +53,7 @@ export const debit =async (req, res) => {
         if(account_balance<amount){
             // creating logs
             mysqlConnection.query(create_logs_sql,[user_id,amount,'failed',trans_ref,'debit'], (err, rows, fields) => {
-                // if(!err)
+              
                 
             });
             return res.status(200).json({ status: "failed",message: "insufficient funds" });
@@ -66,7 +65,7 @@ export const debit =async (req, res) => {
                     // creating logs
                     mysqlConnection.query(create_logs_sql,[user_id,amount,'successful',trans_ref,'debit'], (err, rows, fields) => {
                         if (!err){
-                            //send notification here
+                           
                             return res.status(200).json({ status: "success", message: "User Account Debited" })
                         }
                         
@@ -84,8 +83,6 @@ export const debit =async (req, res) => {
     catch {
         return res.status(400).json({ message: "An Error Occured!" });
     }
-
-    // return res.status(200).json({ message: "Good to go!" });
 
 }
 
@@ -132,7 +129,6 @@ export const User_logs = (req, res) => {
                 
                 if (!err){
                     if(rows[0])
-                    // res.status(200).send(rows);
                     res.status(200).json({status:"success", message:"user logs fetched", data:rows})
                     else
                     res.status(400).json({ status: "failed", message: "user not found" })

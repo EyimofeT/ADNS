@@ -1,5 +1,5 @@
 #env variables
-env_config.json
+.env_config.json
 
 # Logs
 logs

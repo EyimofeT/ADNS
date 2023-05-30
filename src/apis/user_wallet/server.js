@@ -16,10 +16,6 @@ app.use(bodyParser.json())
 
 app.use('/', walletRoutes);
 
-app.get("/mi", (req,res)=>{
-    // console.log(req.body)
-    res.send("Wallet End called");
-});
 
 app.listen(port, ()=>{
     console.log("Wallet Management Listening at localhost "+ port);    

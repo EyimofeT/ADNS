@@ -15,10 +15,6 @@ app.use(bodyParser.json())
 
 app.use('/', notificationRoutes);
 
-app.get("/mi", (req,res)=>{
-    // console.log(req.body)
-    res.send("Notification End called");
-});
 
 app.listen(port, ()=>{
     console.log("Notification Management Listening at localhost "+ port);    

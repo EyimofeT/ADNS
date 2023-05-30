@@ -5,7 +5,6 @@ export const createuser_middleware = async (req, res, next) => {
     return res
       .status(400)
       .json({ status: "failed", message: "cannot pass empty request" });
-  // console.log(req.body)
 
   const { first_name, last_name, phone, email } = req.body;
 
@@ -40,7 +39,7 @@ export const createuser_middleware = async (req, res, next) => {
   const phoneNumberRegex = /^\+234\d{10}$/;
 
   // Test the regex
-  // const phoneNumber = "+234123456789";
+
   if (!phoneNumberRegex.test(phone)) {
     return res
       .status(400)
