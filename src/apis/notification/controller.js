@@ -42,7 +42,7 @@ export const send_mail= async (req, res)=>{
         const info = await transporter.sendMail(mailOptions);
         console.log('Email sent:', info.messageId);
     
-        res.json({ message: 'Email sent successfully' });
+        res.json({status:"success", message: 'Email sent successfully' });
       } catch (error) {
         console.error('Error sending email:', error);
         res.status(500).json({ error: 'Internal server error' });

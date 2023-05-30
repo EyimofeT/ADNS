@@ -5,7 +5,7 @@ export const send_mail_middleware= async(req, res, next)=>{
     .status(400)
     .json({ status: "failed", message: "cannot pass empty request" });
 
-    const { first_name, last_name,email, amount } = req.body;
+    const { first_name, last_name,email, amount, status } = req.body;
 
 if (!first_name) {
   return res
@@ -16,6 +16,11 @@ if (!last_name) {
   return res
     .status(400)
     .json({ status: "failed", message: "last name required" });
+}
+if (!status) {
+  return res
+    .status(400)
+    .json({ status: "failed", message: "status required" });
 }
 if (!email) {
   return res
