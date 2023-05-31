@@ -41,31 +41,20 @@ export const charge=async (req,res)=>{
             //in here wallet charge failed
             status=debit_response.data.status
             message=debit_response.data.message
+            
+            //call notification api for failed transaction
+            const notification_url = `${getenv('NOTIFICATION_API_URL')}send_mail`; 
+            const notification_requestData = {"first_name":first_name, "last_name":last_name, "amount":amount,"status":debit_response.data.status,"email":email};
+            const notification_response = await axios.post(notification_url,notification_requestData)
             return res.json({ status: status, message });
 
-            //call notification api for failed transaction
-            //todo
         }
 
         //call notification api for successful transaction
         const notification_url = `${getenv('NOTIFICATION_API_URL')}send_mail`; 
         const notification_requestData = {"first_name":first_name, "last_name":last_name, "amount":amount,"status":debit_response.data.status,"email":email};
         const notification_response = await axios.post(notification_url,notification_requestData)
-        // const notification_statusCode = notification_response.status;
-        // console.log(notification_response)
-
-        // if (!debit_statusCode === 200) {
-        //     return res.status(200).json({status:"failed", message:"An error occured"});
-        // } 
-        // if(debit_response.data.status!="success"){
-        //     //in here wallet charge failed
-        //     status=debit_response.data.status
-        //     message=debit_response.data.message
-        //     return res.json({ status: status, message });
-
-        //     //call notification api for failed transaction
-        //     //todo
-        // }
+        
         
        return res.status(200).json({status:"success", message:"Account Charge Successful"});
     
