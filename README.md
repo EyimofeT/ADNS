@@ -1,7 +1,7 @@
 # ADNS
 Automated Deposit Notification System - a system that sends mobile notifications or emails to users when an automated deposit is missed due to insufficient funds in their primary money source (wallet).
 
-## Google Drive link to E-R Diagram and Database Schema
+
 
 ## API Documentation
 
